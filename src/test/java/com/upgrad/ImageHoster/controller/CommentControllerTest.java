@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(Im.class)
+@WebMvcTest(CommentController.class)
 public class CommentControllerTest {
     @Autowired
     private MockMvc mockMvc;
@@ -46,11 +46,11 @@ public class CommentControllerTest {
         Mockito.when(imageService.getById(Mockito.anyInt())).thenReturn(image);
 
         // checks to see if we are redirected to the URL of the image that we added a comment to
-        this.mockMvc.perform(post("/image/" + image.getId() + "/" + image.getTitle() + "/comments/create")
+        this.mockMvc.perform(post("/image/" + image.getId() + "/comments/create")
                 .session(session)
                 .param("comment", "some comment"))
                 .andExpect(status().is(302))
-                .andExpect(redirectedUrl("/images/" + image.getId() + "/" + image.getTitle()));
+                .andExpect(redirectedUrl("/images/" + image.getId()));
     }
 
 }

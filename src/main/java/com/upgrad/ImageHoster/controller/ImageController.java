@@ -33,9 +33,6 @@ public class ImageController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private CommentService commentService;
-
     /**
      * This controller method returns all the images that have been
      * uploaded to the website
@@ -140,28 +137,6 @@ public class ImageController {
         imageService.deleteById(image);
 
         return "redirect:/";
-    }
-
-
-    /**
-     * Create comment for img
-     *
-     * @param id
-     * @return
-     */
-    @RequestMapping(value = "/image/{id}/comments/create", method = RequestMethod.POST)
-    public String addComments(@PathVariable Integer id, @RequestParam("comment") String comment, HttpSession session) {
-        User user = (User) session.getAttribute("currUser");
-        if (user == null) {
-            return "redirect:/signup";
-        }
-
-        Comment newComment = new Comment();
-        newComment.setComment(comment);
-        newComment.setImage(imageService.getById(id));
-        newComment.setUser(user);
-        commentService.addComment(newComment);
-        return "redirect:/images/" + id;
     }
 
     /**
