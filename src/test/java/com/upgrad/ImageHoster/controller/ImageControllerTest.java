@@ -6,6 +6,7 @@ import com.upgrad.ImageHoster.model.Image;
 import com.upgrad.ImageHoster.model.ProfilePhoto;
 import com.upgrad.ImageHoster.model.Tag;
 import com.upgrad.ImageHoster.model.User;
+import com.upgrad.ImageHoster.service.CommentService;
 import com.upgrad.ImageHoster.service.ImageService;
 import com.upgrad.ImageHoster.service.TagService;
 import com.upgrad.ImageHoster.service.UserService;
@@ -45,6 +46,9 @@ public class ImageControllerTest {
 
     @MockBean
     private UserService userService;
+
+    @MockBean
+    private CommentService commentService;
 
     protected MockHttpSession session;
 
@@ -102,7 +106,7 @@ public class ImageControllerTest {
         Mockito.when(imageService.getByIdWithJoin(Mockito.anyInt())).thenReturn(image);
 
         // checks to see if the returned view contains the title of the image
-        this.mockMvc.perform(get("/images/someImageId"))
+        this.mockMvc.perform(get("/images/1"))
                 .andExpect(content().string(containsString("This is an image")))
                 .andExpect(content().string(containsString("My Username")));
     }
@@ -137,11 +141,12 @@ public class ImageControllerTest {
         this.mockMvc.perform(multipart("/upload")
                 .file(mockImage)
                 .session(session)
+                .param("id",String.valueOf(1))
                 .param("title", "someImageTitle")
                 .param("description", "description")
                 .param("tags", tags))
                 .andExpect(status().is(302))
-                .andExpect(redirectedUrl("/images/someImageId"));
+                .andExpect(redirectedUrl("/images/0"));
     }
 
     @Test
@@ -156,7 +161,7 @@ public class ImageControllerTest {
         Mockito.when(imageService.getById(Mockito.anyInt())).thenReturn(new Image());
 
         // checks to see if we are redirected to the home page once we delete an image
-        this.mockMvc.perform(get("/images/someImageId/delete").session(session))
+        this.mockMvc.perform(get("/images/1/delete").session(session))
                 .andExpect(status().is(302))
                 .andExpect(redirectedUrl("/"));
     }
@@ -187,7 +192,7 @@ public class ImageControllerTest {
         // 1) Edit Image
         // 2) the image's title
         // 3) the image's descriptions
-        this.mockMvc.perform(get("/images/someImageId/edit").session(session))
+        this.mockMvc.perform(get("/images/1/edit").session(session))
                 .andExpect(content().string(containsString("Edit image")))
                 .andExpect(content().string(containsString(image.getTitle())))
                 .andExpect(content().string(containsString(image.getDescription())));
@@ -215,10 +220,11 @@ public class ImageControllerTest {
         this.mockMvc.perform(multipart("/upload")
                 .file(mockImage)
                 .session(session)
+                .param("id", String.valueOf(1))
                 .param("title", "someImageTitle")
                 .param("description", "description")
                 .param("tags", tags))
                 .andExpect(status().is(302))
-                .andExpect(redirectedUrl("/images/someImageId"));
+                .andExpect(redirectedUrl("/images/0"));
     }
 }
