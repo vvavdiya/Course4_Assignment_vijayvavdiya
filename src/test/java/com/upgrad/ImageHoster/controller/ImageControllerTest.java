@@ -47,9 +47,6 @@ public class ImageControllerTest {
     @MockBean
     private UserService userService;
 
-    @MockBean
-    private CommentService commentService;
-
     protected MockHttpSession session;
 
     @Test
