@@ -14,23 +14,23 @@ public class Comment {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name="image_id", nullable=false)
+    @JoinColumn(name = "image_id", nullable = false)
     private Image image;
 
     @ManyToOne
-    @JoinColumn(name="user_id", nullable=false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String comment;
 
     public Comment() {
 
     }
-    public Comment(String comment) {
-        this.comment=comment;
-    }
 
+    public Comment(String comment) {
+        this.comment = comment;
+    }
 
 
     public int getId() {

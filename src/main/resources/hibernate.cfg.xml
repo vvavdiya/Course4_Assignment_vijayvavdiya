@@ -13,7 +13,7 @@
         <property name="hibernate.current_session_context_class">managed</property>
 
         <!-- run once: tell hibernate create our tables in database-->
-        <!--<property name="hbm2ddl.auto">update</property>-->
+        <!--<property name="hbm2ddl.auto">create</property>-->
 
         <!--Entity classes to be created as tables in database-->
         <mapping class="com.upgrad.ImageHoster.model.User" />

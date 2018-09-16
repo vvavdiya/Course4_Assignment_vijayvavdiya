@@ -1,19 +1,16 @@
 package com.upgrad.ImageHoster.common;
 
 import com.upgrad.ImageHoster.model.Comment;
-import com.upgrad.ImageHoster.model.Tag;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
-public class CommentManager extends SessionManager{
+public class CommentManager extends SessionManager {
     /**
      * This method saves a Comment object to the database
      *
      * @param comment Comment object to be saved into the database
-     *
      * @return the saved comment object
      */
     public Comment addComment(Comment comment) {

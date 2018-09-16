@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User login(String username, String password){
+    public User login(String username, String password) {
         return userManager.loginUser(username, password);
     }
 
@@ -38,5 +38,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void update(User user) { userManager.update(user); }
+    public void update(User user) {
+        userManager.update(user);
+    }
 }

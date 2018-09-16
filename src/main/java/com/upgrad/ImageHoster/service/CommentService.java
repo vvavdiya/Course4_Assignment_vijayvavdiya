@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface CommentService {
     List<Comment> getAllCommentsByImageId(Integer id);
+
     Comment addComment(Comment comment);
 }

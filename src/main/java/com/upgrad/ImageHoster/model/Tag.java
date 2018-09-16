@@ -22,7 +22,8 @@ public class Tag {
     private List<Image> images;
 
 
-    public Tag() {}
+    public Tag() {
+    }
 
     public Tag(String name) {
         this.name = name;

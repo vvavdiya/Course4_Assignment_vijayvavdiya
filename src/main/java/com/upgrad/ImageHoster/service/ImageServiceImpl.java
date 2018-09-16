@@ -15,14 +15,18 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public List<Image> getAll() { return imageManager.getAllImages(); }
+    public List<Image> getAll() {
+        return imageManager.getAllImages();
+    }
 
     @Override
-    public List<Image> getByTag(String tagName) { return imageManager.getImagesByTag(tagName); }
+    public List<Image> getByTag(String tagName) {
+        return imageManager.getImagesByTag(tagName);
+    }
 
     @Override
     public Image getByTitle(String title) {
-       return imageManager.getImageByTitle(title);
+        return imageManager.getImageByTitle(title);
     }
 
     @Override
@@ -31,10 +35,14 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public Image getByTitleWithJoin(String title) { return imageManager.getImageByTitleWithJoins(title); }
+    public Image getByTitleWithJoin(String title) {
+        return imageManager.getImageByTitleWithJoins(title);
+    }
 
     @Override
-    public Image getByIdWithJoin(Integer id) { return imageManager.getImageByIdWithJoins(id); }
+    public Image getByIdWithJoin(Integer id) {
+        return imageManager.getImageByIdWithJoins(id);
+    }
 
     @Override
     public void deleteByTitle(Image image) {
@@ -47,10 +55,14 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public void save(Image image) { imageManager.saveImage(image); }
+    public void save(Image image) {
+        imageManager.saveImage(image);
+    }
 
     @Override
-    public void update(Image newImage) { imageManager.updateImage(newImage); }
+    public void update(Image newImage) {
+        imageManager.updateImage(newImage);
+    }
 
 
 }

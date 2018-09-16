@@ -14,7 +14,6 @@ public class TagManager extends SessionManager {
      * This method saves a Tag object to the database
      *
      * @param tag Tag object to be saved into the database
-     *
      * @return the saved Tag object
      */
     public Tag createTag(Tag tag) {
@@ -28,7 +27,6 @@ public class TagManager extends SessionManager {
      * This method checks if a tag exists in the database
      *
      * @param tagName the name of the Tag that we are looking for
-     *
      * @return a Tag object
      */
     public Tag findTag(String tagName) {

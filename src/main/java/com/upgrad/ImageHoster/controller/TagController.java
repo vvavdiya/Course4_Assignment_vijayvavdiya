@@ -20,8 +20,7 @@ public class TagController {
      * a specific "tag"
      *
      * @param tagName the tag that we want to retrieve images by
-     * @param model Model injected by Spring
-     *
+     * @param model   Model injected by Spring
      * @return the tag/images view
      */
     @RequestMapping("/tags/{tagName}")

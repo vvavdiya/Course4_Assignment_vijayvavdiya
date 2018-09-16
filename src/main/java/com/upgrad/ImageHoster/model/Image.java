@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Image")
-public class Image implements Serializable{
+public class Image implements Serializable {
     // These annotations auto-increments the id column for us whenever
     // a new Image object is stored into the database
     @Id
@@ -27,7 +27,7 @@ public class Image implements Serializable{
 
     // Text is a Postgres specific column type that allows you to save
     // text based data that will be longer than 256 characters
-    @Column(columnDefinition="TEXT")
+    @Column(columnDefinition = "TEXT")
     private String imageFile; // this is a base64 encoded version of the image
 
     @Column
@@ -39,18 +39,19 @@ public class Image implements Serializable{
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @OneToMany(mappedBy="image", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "image", fetch = FetchType.EAGER)
     private Set<Comment> comments;
 
     // These  annotations creates a join table for many-to-many relationships
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name="Image_Tag",
-        joinColumns = { @JoinColumn(name = "image_id")},
-        inverseJoinColumns = { @JoinColumn(name = "tag_id")})
+    @JoinTable(name = "Image_Tag",
+            joinColumns = {@JoinColumn(name = "image_id")},
+            inverseJoinColumns = {@JoinColumn(name = "tag_id")})
     private List<Tag> tags = new ArrayList<Tag>();
 
 
-    public Image() { }
+    public Image() {
+    }
 
     public Image(String title, String description, String imageFile, User user, List<Tag> tags) {
         this.description = description;
@@ -82,7 +83,9 @@ public class Image implements Serializable{
         this.imageFile = imageFile;
     }
 
-    public String getDescription() { return this.description; }
+    public String getDescription() {
+        return this.description;
+    }
 
     public void setDescription(String description) {
         this.description = description;
@@ -104,13 +107,21 @@ public class Image implements Serializable{
         this.uploadDate = uploadDate;
     }
 
-    public void setUser(User user) { this.user = user; }
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-    public User getUser() { return this.user; }
+    public User getUser() {
+        return this.user;
+    }
 
-    public List<Tag> getTags() { return tags; }
+    public List<Tag> getTags() {
+        return tags;
+    }
 
-    public void setTags(List<Tag> tags) { this.tags = tags; }
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
 
     public Set<Comment> getComments() {
         return comments;

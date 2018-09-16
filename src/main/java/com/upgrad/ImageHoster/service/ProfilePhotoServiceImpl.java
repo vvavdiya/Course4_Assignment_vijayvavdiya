@@ -5,7 +5,7 @@ import com.upgrad.ImageHoster.model.ProfilePhoto;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProfilePhotoServiceImpl implements ProfilePhotoService  {
+public class ProfilePhotoServiceImpl implements ProfilePhotoService {
     private ProfilePhotoManager profilePhotoManager;
 
     public ProfilePhotoServiceImpl() {
@@ -13,8 +13,12 @@ public class ProfilePhotoServiceImpl implements ProfilePhotoService  {
     }
 
     @Override
-    public void save(ProfilePhoto photo){ profilePhotoManager.saveProfilePhoto(photo); }
+    public void save(ProfilePhoto photo) {
+        profilePhotoManager.saveProfilePhoto(photo);
+    }
 
     @Override
-    public void update(ProfilePhoto photo){ profilePhotoManager.updateProfilePhoto(photo); }
+    public void update(ProfilePhoto photo) {
+        profilePhotoManager.updateProfilePhoto(photo);
+    }
 }
